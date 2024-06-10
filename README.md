@@ -52,7 +52,7 @@ Usar el sig endpoint usando el metodo POST:
 ~~~
 http://localhost:PORT/user/ID
 ~~~
-Sidenote2: Remplazar ID con el ID del usuario que se necesita
+Sidenote: Remplazar ID con el ID del usuario que se necesita
 
 ### INICIAR SESIÓN
 
