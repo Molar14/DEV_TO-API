@@ -106,4 +106,5 @@ Ejemplo de Json en body:
 }
 ~~~
 Sidenote: Es necesario estar logeado con el usuario dueño del post para este metodo
+
 Sidenote2: El ID requerido es el ID de la publicacion
