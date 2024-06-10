@@ -52,6 +52,7 @@ Usar el sig endpoint usando el metodo POST:
 ~~~
 http://localhost:PORT/user/ID
 ~~~
+Sidenote2: Remplazar ID con el ID del usuario que se necesita
 
 ### INICIAR SESIÓN
 
@@ -107,4 +108,4 @@ Ejemplo de Json en body:
 ~~~
 Sidenote: Es necesario estar logeado con el usuario dueño del post para este metodo
 
-Sidenote2: El ID requerido es el ID de la publicacion
+Sidenote2: Reemplazar ID con el ID de la publicacion
