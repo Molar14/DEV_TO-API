@@ -18,10 +18,6 @@ async function login(email, password) {
    return token
 }
 
-function logout(params) {
-   
-}
-
 module.exports = {
    login, logout
 }

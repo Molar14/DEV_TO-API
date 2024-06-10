@@ -17,7 +17,7 @@ const schema = new mongoose.Schema({
       minLength: 2,
       maxLength: 1000
     },
-   generation: {
+   User: {
     type: mongoose.Types.ObjectId, 
     ref: "Users"
     },

@@ -1,23 +1,50 @@
 const createError = require('http-errors')
 const publicacions = require('../models/publicacions.model')
 
-async function index() {
-   const publicacion = await publicacions.find()
-
-   return publicacion
-}
-
-async function store(data) {
-   const publicacionFound = await publicacion.findOne({ number: data.number })
-
-   if (publicacionFound)
-      throw createError(400, "Generation already in use")
-
-   const user = await publicacions.create(data)
-   return user
-}
-
-module.exports = {
-   index,
-   store
-}
+async function create(postData) {
+   const newPost = await publicacions.create(postData);
+   return newPost;
+ }
+ 
+ async function getAll() {
+   const allPosts = await publicacions.find().populate("user");
+   return allPosts;
+ }
+ 
+ async function getById(id) {
+   const post = await publicacions.findById(id);
+   return post;
+ }
+ 
+ async function getByTitle(title) {
+   const query = { title: { $regex: title, $options: "i" } };
+   const getByTitle = await publicacions.find(query).populate("user");
+   return getByTitle;
+ }
+ 
+ async function deleteById(idPost, idUserPost, idUserActive) {
+   if (idUserPost != idUserActive)
+     throw createError(403, "The user isn't the creator of the post");
+ 
+   const postDeleted = await publicacions.findByIdAndDelete(idPost);
+   return postDeleted;
+ }
+ 
+ async function updateById(id, newPostData) {
+   const originalUser = await publicacions.findById(id);
+   newPostData.user = originalUser.user;
+   newPostData.updated_at = new Date();
+   const updatedPost = await publicacions.findByIdAndUpdate(id, newPostData, {
+     new: true,
+   });
+   return updatedPost;
+ }
+ 
+ module.exports = {
+   create,
+   getAll,
+   getById,
+   getByTitle,
+   deleteById,
+   updateById,
+ };
