@@ -19,5 +19,5 @@ async function login(email, password) {
 }
 
 module.exports = {
-   login, logout
+   login
 }
