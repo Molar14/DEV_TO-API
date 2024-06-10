@@ -22,7 +22,7 @@ mongoose: 8.4.1
 Primero es necesario crear tu archivo **.env** basandote en las variables que encontrarás en el archivo **example.env**.
 Hecho lo anterior luego de instalar las dependencias:
 ~~~
-npm i
+npm install bcryptjs && npm install cors && npm install dotenv && npm install express && npm install http-errors && npm install jsonwebtoken && npm install mongoose
 ~~~
 Podrás probar la API con tu **Thunder Client** corriendo primero el servidor con el siguiente comando en tu terminal:
 ~~~
