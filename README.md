@@ -29,3 +29,81 @@ npm install bcryptjs && npm install cors && npm install dotenv && npm install ex
 ~~~
 npm run dev
 ~~~
+
+## REGISTRO DE USUARIOS:
+
+Usar el sig endpoint usando el metodo POST:
+~~~
+http://localhost:PORT/user
+~~~
+Ejemplo de Json en body para el registro:
+~~~
+{
+    "name":"lorem ipsum",
+    "ProfilePic":"https://picsum.photos/200/300",
+    "email":"Correofake@ejemplo.com",
+    "password":"CONTRASEÑA123"
+}
+~~~
+
+### CONSULTA UN USUARIO POR ID
+
+Usar el sig endpoint usando el metodo POST:
+~~~
+http://localhost:PORT/user/ID
+~~~
+
+### INICIAR SESIÓN
+
+Usar el sig endpoint usando el metodo POST:
+~~~
+http://localhost:PORT/auth/login
+~~~
+Ejemplo de Json en body para el registro:
+~~~
+{
+    "email":"Correofake@ejemplo.com",
+    "password":"CONTRASEÑA123"
+}
+~~~
+Sidenote: Copiar el **token** y pegarlo en la sección de **Headers** la opción de **Authorization** verifica que la casilla esté palomeada
+
+### NUEVO POST
+
+Usar el sig endpoint usando el metodo POST:
+~~~
+http://localhost:PORT/posts
+~~~
+Ejemplo de Json en body:
+~~~
+{
+    "title": "TITULO LLAMATIVO",
+    "image": "https://picsum.photos/200/300",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut justo in enim dapibus egestas in eu nisi."
+}
+~~~
+Sidenote: Es necesario estar logeado para este metodo
+
+### LISTAR POSTS
+
+Usar el sig endpoint usando el metodo GET:
+~~~
+http://localhost:PORT/posts
+~~~
+
+### ACTUALIZAR POSTS
+
+Usar el sig endpoint usando el metodo POST:
+~~~
+http://localhost:PORT/posts/ID
+~~~ 
+Ejemplo de Json en body:
+~~~
+{
+    "title": "NUEVO TITULO LLAMATIVO",
+    "image": "https://picsum.photos/200/300",
+    "body": "Suspendisse ut justo in enim dapibus egestas in eu nisi."
+}
+~~~
+Sidenote: Es necesario estar logeado con el usuario dueño del post para este metodo
+Sidenote2: El ID requerido es el ID de la publicacion
