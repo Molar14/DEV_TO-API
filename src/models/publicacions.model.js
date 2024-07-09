@@ -22,6 +22,11 @@ const schema = new mongoose.Schema({
       ref: 'user', // Asegúrate de que 'User' es el nombre correcto del modelo de usuarios
       required: true,
     },
+    hashtags: {
+      type: String,
+      minLength: 2,
+      maxLength: 1000
+    },
     Updated_at: {
         type: Date,
         default: Date.now
