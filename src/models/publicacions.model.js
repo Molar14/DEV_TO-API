@@ -17,9 +17,10 @@ const schema = new mongoose.Schema({
       minLength: 2,
       maxLength: 1000
     },
-   User: {
-    type: mongoose.Types.ObjectId, 
-    ref: "Users"
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'user', // Asegúrate de que 'User' es el nombre correcto del modelo de usuarios
+      required: true,
     },
     Updated_at: {
         type: Date,

@@ -6,46 +6,46 @@ const router = express.Router();
 
 const route = express.Router();
 
-router.post("/", auth, async (request, response) => {
+route.post("/", auth, async (req, res) => {
   try {
-   request.body.user = request.user.id;
-    const posts = await publicacionCase.create(request.body);
+    req.body.user = req.user.id;
+    const posts = await publicacionCase.create(req.body);
 
-    response.json({
+    res.json({
       succes: true,
       data: { post: posts },
     });
   } catch (error) {
-   response.status(error.status || 500);
-   response.json({
+    res.status(error.status || 500);
+    res.json({
       succes: false,
       error: error.message,
     });
   }
 });
 
-router.get("/", async (request, response) => {
+route.get("/", async (req, res) => {
   try {
-    const search = request.query.search;
+    const search = req.query.search;
     if (!search) {
       const posts = await publicacionCase.getAll();
-      response.json({
-        succes: true,
+      res.json({
+        success: true,
         message: "All Posts",
         data: { posts },
       });
     } else {
       const posts = await publicacionCase.getByTitle(search);
-      response.json({
-        succes: true,
-        message: "All posts finded with " + search,
+      res.json({
+        success: true,
+        message: "All posts found with " + search,
         data: { posts },
       });
     }
   } catch (error) {
-   response.status(error.status || 500);
-   response.json({
-      succes: false,
+    res.status(error.status || 500);
+    res.json({
+      success: false,
       error: error.message,
     });
   }

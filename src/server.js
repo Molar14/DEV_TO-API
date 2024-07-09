@@ -13,7 +13,7 @@ app.use(express.json()) // Middleware
 // Rutas
 app.use('/auth', authRouter)
 app.use('/user', userRouter)
-app.use('/publicacion', publicacionRouter)
+app.use('/post', publicacionRouter)
 
 app.get('/', (request, response) => {
    response.json({

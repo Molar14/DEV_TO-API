@@ -1,20 +1,20 @@
 const createError = require('http-errors')
-const user = require('../models/user.model')
+const userModel = require('../models/user.model')
 const encrypt = require('../lib/encrypt')
 
 async function create(userData) {
-   const userFound = await user.findOne({ email: userData.email });
+   const userFound = await userModel.findOne({ email: userData.email });
  
    if (userFound) throw createError(409, "Email already in use");
  
    userData.password = await encrypt.encrypt(userData.password);
  
-   const newUser = await user.create(userData);
+   const newUser = await userModel.create(userData);
    return newUser;
  }
  
  async function getById(id) {
-   const user = await user.findById(id);
+   const user = await userModel.findById(id);
    return user;
  }
  

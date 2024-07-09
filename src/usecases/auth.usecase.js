@@ -4,16 +4,16 @@ const jwt = require('../lib/jwt')
 const encrypt = require('../lib/encrypt')
 
 async function login(email, password) {
-   const users = await user.findOne({ email: email })
-   if (!users)
-      throw createError(401, 'Invalid data')
+   const userFound  = await user.findOne({ email: email })
+   if (!userFound)
+      throw createError(401, 'Invalid user')
 
-   const isValid = await encrypt.compare(password, user.password)
+   const isValid = await encrypt.compare(password, userFound.password)
    if (!isValid) {
-      throw createError(401, 'Invalid data')
+      throw createError(401, 'Invalid password')
    }
 
-   const token = jwt.sign({ id: user._id })
+   const token = jwt.sign({ id: userFound._id })
 
    return token
 }
