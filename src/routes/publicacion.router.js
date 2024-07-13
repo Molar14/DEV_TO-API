@@ -24,30 +24,32 @@ route.post("/", auth, async (req, res) => {
   }
 });
 
-route.get("/", async (req, res) => {
+route.get("/", async (req,res) => {
   try {
-    const search = req.query.search;
-    if (!search) {
-      const posts = await publicacionCase.getAll();
-      res.json({
-        success: true,
-        message: "All Posts",
-        data: { posts },
-      });
-    } else {
-      const posts = await publicacionCase.getByTitle(search);
-      res.json({
-        success: true,
-        message: "All posts found with " + search,
-        data: { posts },
-      });
-    }
+      const search = req.query.search;
+      
+      if(!search) {
+          const post = await publicacionCase.getAll();
+
+          res.json ({
+              succes: true,
+              meessage: "All Post",
+              data: { post },
+          })
+      } else {
+          const tittle = await publicacionCase.getByTittle(search);
+          res.json({
+              succes: true,
+              message: "All post finded with " + search,
+              data: { tittle },
+          });
+      }
   } catch (error) {
-    res.status(error.status || 500);
-    res.json({
-      success: false,
-      error: error.message,
-    });
+      res.status(error.status || 500);
+      res.json ({
+          succes: false, 
+          error: error.message,
+      });
   }
 });
 
