@@ -9,7 +9,8 @@ const schema = new mongoose.Schema({
    },
    image: {
       type: String,
-      minLength: 2
+      minLength: 2,
+      required: false
    },
     body: {
       type: String,
@@ -19,13 +20,8 @@ const schema = new mongoose.Schema({
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'user', // Asegúrate de que 'User' es el nombre correcto del modelo de usuarios
-      required: true,
-    },
-    hashtags: {
-      type: String,
-      minLength: 2,
-      maxLength: 1000
+      ref: 'user', 
+      // Asegúrate de que 'User' es el nombre correcto del modelo de usuarios
     },
     Updated_at: {
         type: Date,
